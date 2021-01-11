@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <title>TTT</title>
+</head>
+<style>
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    main {
+        display: grid;
+        place-items: center center;
+        min-height: 80vh;
+    }
+
+    .container {
+        min-width: 300px;
+        width: min(70%, 70vh);
+        height: min(70%, 70vw);
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        grid-template-rows: 33.33% 33.33% 33.33%;
+        background-color: rgb(19, 19, 19);
+    }
+
+    .container>div,svg {
+        height: 100%;
+        width: 100%;
+    }
+    
+
+    .block {
+        width: 100%;
+        height: 100%;
+        border: 1px solid silver;
+    }
+
+    button {
+        border: 1px solid black;
+        padding: 8px 12px;
+        border-radius: 6px;
+        margin: auto;
+        width: 10vw;
+        min-width: 110px;
+        max-width: 400px;
+        height: 10vh;
+        min-height: 50px;
+        max-height: 100px;
+        font-size: 22px;
+        cursor: pointer;
+        display: block;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-shadow: 1px 1px black, -1px -1px black, -1px 1px black, 1px -1px black;
+        background: linear-gradient(-45deg, rgb(99, 243, 164), rgb(143, 200, 247));
+    }
+
+    .X,
+    .O {
+        width: 10vw;
+        min-width: 100px;
+        max-width: 400px;
+        height: 10vh;
+        min-height: 50px;
+        max-height: 100px;
+        margin: auto;
+    }
+
+    #info {
+        display: flex;
+        align-items: center;
+        min-width: 300px;
+        width: min(90%, 90vh);
+        height: min(90%, 90vw);
+        margin: 20px auto;
+
+    }
+    #info>div{
+        flex-basis: 33.33%;
+        width: 33.33%;
+    }
+    .available{
+        color: rgb(93, 224, 93);
+        font-weight: 500;
+        font-size: 14px;
+        text-align: center;
+    }
+    .XContainer,.OContainer{
+        cursor: pointer;
+    }
+    .connectionStatus{
+        text-align: center;
+        padding: 2px;
+    }
+    .winner{
+        text-align: center;
+        padding: 10px 0;
+        font-size: 2rem;
+        font-family: Righteous, sans-serif;
+        color: rgb(255, 0, 128);
+    }
+</style>
+
+<body>
+    <section id="info">
+        <div class="XContainer" onclick="symbolSelected(event,'X')">
+            <div class="X"></div>
+            <div class="Xavailable available">available</div>
+        </div>
+        <div>
+            <button class="restart">Restart</button>
+            <p class="connectionStatus"></p>
+        </div>
+        <div class="OContainer" onclick="symbolSelected(event,'O')">
+            <div class="O"></div>
+            <div class="Oavailable available">available</div>
+        </div>
+    </section>
+    <section>
+        <p class="winner"></p>
+    </section>
+    <main>
+        <section class="container">
+            <div>
+                <div class="block" data-id="0"></div>
+            </div>
+            <div>
+                <div class="block" data-id="1"></div>
+            </div>
+            <div>
+                <div class="block" data-id="2"></div>
+            </div>
+            <div>
+                <div class="block" data-id="3"></div>
+            </div>
+            <div>
+                <div class="block" data-id="4"></div>
+            </div>
+            <div>
+                <div class="block" data-id="5"></div>
+            </div>
+            <div>
+                <div class="block" data-id="6"></div>
+            </div>
+            <div>
+                <div class="block" data-id="7"></div>
+            </div>
+            <div>
+                <div class="block" data-id="8"></div>
+            </div>
+        </section>
+    </main>
+    <audio src="/front/blop.mp3" id="blop" />
+    <audio src="/front/todo.mp3" id="todo" />
+    <audio src="/front/bell.ogg" id="bell" />
+
+    <script src="/front/socket.io.js">
+    </script>
+    <script src="/front/index.js"></script>
+</body>
+
+</html>
